@@ -1,10 +1,6 @@
 FROM dockerfile/java
 MAINTAINER SequenceIQ
 
-ADD latest-release.sh /tmp/
+ADD http://seq-repo.s3-website-eu-west-1.amazonaws.com/releases/com/sequenceiq/cloudbreak/0.1-20140717051917/cloudbreak-0.1-20140717051917.jar /cloudbreak.jar
 
-# get the latest release from the maven repo
-RUN sh /tmp/latest-release.sh
-
-WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "cloudbreak.jar"]
+ENTRYPOINT ["java", "-jar", "/cloudbreak.jar"]
